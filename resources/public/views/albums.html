@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div ng-controller='AlbumCtrl'>
+  <div ng-repeat="album in albums track by $index">
+    <a href="albums/{{album.title}}/photos">{{album.title}}</a>
+    PHOTOS
+    <div id="dog" ng-repeat="photo in album.photos | filterz:'$index':true ">
+      <img data-id="photo-{{$index}}"src="{{photo}}">
+    </div>
+  </div>
+</div>
+
+<a href="/">Home</a>
+{% endblock %}

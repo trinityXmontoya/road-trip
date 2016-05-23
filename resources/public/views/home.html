@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="home-page">
+
+  <div ng-controller='AlbumCtrl'>
+
+    <div ng-repeat="album in albums track by $index">
+      {{album.title}}
+    </div>
+
+  <!--   <form action="../">
+      <select onchange="window.open(this.options[this.selectedIndex].value,'_top')" class="destination-select">
+        <option value="" style="font-family: 'Ubuntu', sans-serif;">Choose a destination...</option>
+        <option value="/go">Barcelona</option>
+        <option value="">Berlin</option>
+        <option value="">London</option>
+        <option value="">New York</option>
+        <option value="">Paris</option>
+        <option value="">Prague</option>
+        <option value="">Rome</option>
+        <option value="">Venice</option>
+        <option value="">Washington</option>
+      </select>
+    </form> -->
+    <sidebar>
+      <section class="sidebar-nav">
+        <div class="sidebar-nav-item">
+          <a><i class="fa fa-arrow-left"></i></a>
+        </div>
+        <div class="sidebar-nav-item">
+           <a><i class="fa fa-cog"></i></a>
+        </div>
+      </section>
+      <section class="sidebar-masthead">
+        <div class="logo"></div>
+        <h1>Roadtrip</h1>
+        <p>Immersive tours for learning or pleasure</p>
+      </section>
+      <section class="sidebar-content">
+        <h3>DESTINATIONS</h3>
+        <ul>
+          <li class="destination-item">
+            <div class="destination-item-map" id="map"></div>
+            <div class="destination-item-label"><h5>Barcelona, Spain</h5></div>
+          </li>
+          <li class="destination-item">
+            <div class="destination-item-map" id="map"></div>
+            <div class="destination-item-label"><h5>Barcelona, Spain</h5></div>
+          </li>
+          <li class="destination-item">
+            <div class="destination-item-map" id="map"></div>
+            <div class="destination-item-label"><h5>Barcelona, Spain</h5></div>
+          </li>
+        </ul>
+
+      </section>
+      <section class="sidebar-cta">
+        <button>Start Roadtrip</button>
+      </section>
+    </sidebar>
+    <canvas id="hyperFixed"></canvas>
+    <canvas id="hyper"></canvas>
+ <!--    <h1>Bite me yoo</h1> -->
+  </div>
+
+</div>
+<script>
+$(document).ready( function(){
+
+  L.control.attribution(false);
+  var map = L.mapbox.map('map', 'mikedemarais.j947j8ae');
+ var sidebarNavHeight = $('.sidebar-nav').outerHeight() + $('.sidebar-masthead').outerHeight() + $('.sidebar-cta').outerHeight() + 8;
+  $('.sidebar-content').css({'height': ($(window).height() - sidebarNavHeight) + 'px'})
+  //map.legendControl.removeLegend(map);
+});
+</script>
+{% endblock %}
